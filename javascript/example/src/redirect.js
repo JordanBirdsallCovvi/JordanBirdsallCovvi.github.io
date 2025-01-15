@@ -1,5 +1,6 @@
 // redirect from example to example/bundle for demo
 // link backward compatibility only on github-hosted demo
+console.log(location.href);
 const url = new URL(location.href);
 const tokens = url.pathname.split(/[\\/]/g);
 const filename = tokens.pop();
