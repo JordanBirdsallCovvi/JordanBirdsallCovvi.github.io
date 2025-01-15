@@ -53,7 +53,7 @@ URDFRobot robot = URDFLoader.Load(".../path/to/urdf", packages, options);
 ```
 
 ## Limitations
-- The Collada model loader currently does not support textures or materials and loads the models with an offset rotation ([Issue #52](https://github.com/gkjohnson/urdf-loaders/issues/52)).
+- The Collada model loader currently does not support textures or materials and loads the models with an offset rotation ([Issue #52](https://github.com/jordanbirdsallcovvi/urdf-loaders/issues/52)).
 - Only `continuous`, `revolute`, and `fixed` joints are supported.
 
 # API

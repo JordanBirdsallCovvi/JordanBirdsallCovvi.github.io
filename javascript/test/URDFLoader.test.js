@@ -87,10 +87,10 @@ describe.skip('File Argument', () => {
     it('should work if the file is already parsed', async() => {
 
         const loader = new URDFLoader();
-        loader.packages = 'https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing';
-        loader.workingPath = 'https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/';
+        loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing';
+        loader.workingPath = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/';
 
-        const req = await fetch('https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
+        const req = await fetch('https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
         const xmlContent = await req.text();
         const parsedContent = new DOMParser().parseFromString(xmlContent, 'text/xml');
 
@@ -111,14 +111,14 @@ describe('Options', () => {
         it('should exclude the elements if false', async() => {
 
             const loader = new URDFLoader();
-            loader.packages = 'https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/';
+            loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/';
             loader.loadMeshCb = emptyLoadMeshCallback;
             loader.parseVisual = false;
             loader.parseCollision = false;
 
             let visTotal = 0;
             let colTotal = 0;
-            const robot = await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
+            const robot = await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
             robot.traverse(c => {
 
                 if (c.isURDFCollider) {
@@ -143,14 +143,14 @@ describe('Options', () => {
         it('should include the elements if true', async() => {
 
             const loader = new URDFLoader();
-            loader.packages = 'https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/';
+            loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/';
             loader.loadMeshCb = emptyLoadMeshCallback;
             loader.parseVisual = true;
             loader.parseCollision = true;
 
             let visTotal = 0;
             let colTotal = 0;
-            const robot = await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
+            const robot = await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
             robot.traverse(c => {
 
                 if (c.isURDFCollider) {
@@ -179,7 +179,7 @@ describe('Options', () => {
         it('should get called to load all meshes', async() => {
 
             const loader = new URDFLoader();
-            loader.packages = 'https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing';
+            loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing';
             loader.loadMeshCb = (path, manager, done) => {
 
                 const mesh = new Mesh();
@@ -189,7 +189,7 @@ describe('Options', () => {
             };
 
             let fromCallbackCount = 0;
-            const robot = await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
+            const robot = await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
             robot.traverse(c => {
 
                 if (c.fromCallback) {
@@ -216,17 +216,17 @@ describe('Options', () => {
                 done(mesh);
 
             };
-            await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
+            await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
 
             loader.workingPath = '';
             loader.loadMeshCb = (path, manager, done) => {
 
                 const mesh = new Mesh();
-                expect(path).toContain('https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf');
+                expect(path).toContain('https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf');
                 done(mesh);
 
             };
-            await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
+            await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
 
             expect(loader.workingPath).toBe('');
         });
@@ -319,12 +319,12 @@ describe('Clone', () => {
     it('should clone the robot exactly', async() => {
 
         const loader = new URDFLoader();
-        loader.packages = 'https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/';
+        loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/';
         loader.loadMeshCb = emptyLoadMeshCallback;
         loader.parseVisual = true;
         loader.parseCollision = true;
 
-        const robot = await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
+        const robot = await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
 
         compareRobots(robot, robot.clone());
 
@@ -333,12 +333,12 @@ describe('Clone', () => {
     it('should clone the robot exactly even when node names have been changed', async() => {
 
         const loader = new URDFLoader();
-        loader.packages = 'https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/';
+        loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/';
         loader.loadMeshCb = emptyLoadMeshCallback;
         loader.parseVisual = true;
         loader.parseCollision = true;
 
-        const robot = await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
+        const robot = await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
 
         robot.name = 'test 1';
 
@@ -468,8 +468,8 @@ describe.skip('TriATHLETE Climbing URDF', () => {
     beforeEach(async() => {
 
         const loader = new URDFLoader();
-        loader.packages = 'https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing';
-        robot = await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
+        loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing';
+        robot = await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/urdf-loaders/master/urdf/TriATHLETE_Climbing/urdf/TriATHLETE.URDF');
 
     });
 
@@ -500,10 +500,10 @@ describe.skip('TriATHLETE Climbing URDF', () => {
     it('should load the robonaut model successfully.', async() => {
 
         const loader = new URDFLoader();
-        loader.packages = 'https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/';
+        loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/';
         loader.loadMeshCb = emptyLoadMeshCallback;
 
-        const robot = await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
+        const robot = await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/r2_description/robots/r2b.urdf');
 
         expect(Object.keys(robot.links)).toHaveLength(128);
         expect(Object.keys(robot.joints)).toHaveLength(127);
@@ -513,10 +513,10 @@ describe.skip('TriATHLETE Climbing URDF', () => {
     it('should load the valkyrie model successfully.', async() => {
 
         const loader = new URDFLoader();
-        loader.packages = 'https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/';
+        loader.packages = 'https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/';
         loader.loadMeshCb = emptyLoadMeshCallback;
 
-        const robot = await loader.loadAsync('https://raw.githubusercontent.com/gkjohnson/nasa-urdf-robots/master/val_description/model/robots/valkyrie_A.urdf');
+        const robot = await loader.loadAsync('https://raw.githubusercontent.com/jordanbirdsallcovvi/nasa-urdf-robots/master/val_description/model/robots/valkyrie_A.urdf');
 
         expect(Object.keys(robot.links)).toHaveLength(69);
         expect(Object.keys(robot.joints)).toHaveLength(68);

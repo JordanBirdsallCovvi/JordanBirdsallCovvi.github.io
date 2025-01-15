@@ -1,15 +1,15 @@
 # urdf-loader
 
 [![npm version](https://img.shields.io/npm/v/urdf-loader.svg?style=flat-square)](https://www.npmjs.com/package/urdf-loader)
-[![build](https://img.shields.io/github/actions/workflow/status/gkjohnson/urdf-loaders/node.js.yml?style=flat-square&label=build&branch=master)](https://github.com/gkjohnson/urdf-loaders/actions)
+[![build](https://img.shields.io/github/actions/workflow/status/jordanbirdsallcovvi/urdf-loaders/node.js.yml?style=flat-square&label=build&branch=master)](https://github.com/jordanbirdsallcovvi/urdf-loaders/actions)
 
 Utilities for loading URDF files into THREE.js and a Web Component that loads and renders the model.
 
-[Basic loader example here!](https://gkjohnson.github.io/urdf-loaders/javascript/example/bundle/simple.html)
+[Basic loader example here!](https://jordanbirdsallcovvi.github.io/urdf-loaders/javascript/example/bundle/simple.html)
 
-[VR example here!](https://gkjohnson.github.io/urdf-loaders/javascript/example/bundle/vr.html)
+[VR example here!](https://jordanbirdsallcovvi.github.io/urdf-loaders/javascript/example/bundle/vr.html)
 
-[Drag and drop web component tool here!](https://gkjohnson.github.io/urdf-loaders/javascript/example/bundle/index.html)
+[Drag and drop web component tool here!](https://jordanbirdsallcovvi.github.io/urdf-loaders/javascript/example/bundle/index.html)
 
 ![Example](/javascript/docs/javascript-example.gif)
 
@@ -84,7 +84,7 @@ loader.load( 'T12/urdf/T12.URDF', robot => {
 
 #### From Xacro
 
-Using [XacroParser](https://github.com/gkjohnson/xacro-parser) to process a Xacro URDF file and then parse it.
+Using [XacroParser](https://github.com/jordanbirdsallcovvi/xacro-parser) to process a Xacro URDF file and then parse it.
 
 ```js
 import { LoaderUtils } from 'three';
