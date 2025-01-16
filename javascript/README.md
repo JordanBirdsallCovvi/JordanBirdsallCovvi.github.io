@@ -5,11 +5,11 @@
 
 Utilities for loading URDF files into THREE.js and a Web Component that loads and renders the model.
 
-[Basic loader example here!](https://jordanbirdsallcovvi.github.io/urdf-loaders/javascript/example/bundle/simple.html)
+[Basic loader example here!](https://covvi-robotics.github.io/urdf-loaders/javascript/example/bundle/simple.html)
 
-[VR example here!](https://jordanbirdsallcovvi.github.io/urdf-loaders/javascript/example/bundle/vr.html)
+[VR example here!](https://covvi-robotics.github.io/urdf-loaders/javascript/example/bundle/vr.html)
 
-[Drag and drop web component tool here!](https://jordanbirdsallcovvi.github.io/urdf-loaders/javascript/example/bundle/index.html)
+[Drag and drop web component tool here!](https://covvi-robotics.github.io/urdf-loaders/javascript/example/bundle/index.html)
 
 ![Example](/javascript/docs/javascript-example.gif)
 
