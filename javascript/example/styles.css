@@ -127,6 +127,7 @@ input:focus {
 
 #menu {
     position: relative;
+    width: 20%;
     top: 0;
     left: 0;
     display: flex;
