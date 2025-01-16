@@ -16,7 +16,7 @@ const viewer = document.querySelector('urdf-viewer');
 
 // const limitsToggle     = document.getElementById('ignore-joint-limits');
 // const collisionToggle  = document.getElementById('collision-toggle');
-const radiansToggle    = document.getElementById('radians-toggle');
+// const radiansToggle    = document.getElementById('radians-toggle');
 // const autocenterToggle = document.getElementById('autocenter-toggle');
 const upSelect         = document.getElementById('up-select');
 const sliderList       = document.querySelector('#controls ul');
@@ -48,12 +48,12 @@ const setColor = color => {
 // });
 
 
-radiansToggle.addEventListener('click', () => {
-    radiansToggle.classList.toggle('checked');
-    Object
-        .values(sliders)
-        .forEach(sl => sl.update());
-});
+// radiansToggle.addEventListener('click', () => {
+//     radiansToggle.classList.toggle('checked');
+//     Object
+//         .values(sliders)
+//         .forEach(sl => sl.update());
+// });
 
 
 // collisionToggle.addEventListener('click', () => {
@@ -178,7 +178,8 @@ viewer.addEventListener('urdf-processed', () => {
             const slider = li.querySelector('input[type="range"]');
             const input = li.querySelector('input[type="number"]');
             li.update = () => {
-                const degMultiplier = radiansToggle.classList.contains('checked') ? 1.0 : RAD2DEG;
+                // const degMultiplier = radiansToggle.classList.contains('checked') ? 1.0 : RAD2DEG;
+                const degMultiplier = RAD2DEG;
                 let angle = joint.angle;
 
                 if (joint.jointType === 'revolute' || joint.jointType === 'continuous') {
@@ -230,7 +231,8 @@ viewer.addEventListener('urdf-processed', () => {
             });
 
             input.addEventListener('change', () => {
-                const degMultiplier = radiansToggle.classList.contains('checked') ? 1.0 : DEG2RAD;
+                // const degMultiplier = radiansToggle.classList.contains('checked') ? 1.0 : DEG2RAD;
+                const degMultiplier = DEG2RAD;
                 viewer.setJointValue(joint.name, input.value * degMultiplier);
                 li.update();
             });
