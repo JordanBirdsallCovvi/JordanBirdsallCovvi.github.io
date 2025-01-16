@@ -127,6 +127,7 @@ input:focus {
 
 #all {
     position: absolute;
+    width: 100%;
 }
 
 #menu {
