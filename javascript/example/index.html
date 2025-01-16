@@ -12,43 +12,45 @@
         <script src="./src/redirect.js"></script>
     </head>
     <body tabindex="0">
-        <div id="menu">
-            <h1 class="title">
-                URDF Viewer
+        <div id="all">
+            <h1 id="title">
+                URDF Viewer - COVVI
             </h1>
-            
-            <label class="desc">
+
+            <label id="desc">
                 Here is the URDF model of the COVVI Hand. You can select the right and left variants by selecting "COVVI Hand Right" and "COVVI Hand Left" respectively.
                 You can disable the animation by selecting "Animate Joints".
                 Interact with the hand by using the six sliders.
             </label>
 
-            <ul id="urdf-options">
-                <li urdf="../../../urdf/linear_covvi_hand_right.urdf" color="#121212">COVVI Hand Right</li>
-                <li urdf="../../../urdf/linear_covvi_hand_left.urdf"  color="#121212">COVVI Hand Left</li>
-            </ul>
+            <div id="menu">
+                <ul id="urdf-options">
+                    <li urdf="../../../urdf/linear_covvi_hand_right.urdf" color="#121212">COVVI Hand Right</li>
+                    <li urdf="../../../urdf/linear_covvi_hand_left.urdf"  color="#121212">COVVI Hand Left</li>
+                </ul>
 
-            <div id="controls">
-                <!-- <div id="toggle-controls"></div> -->
-                <!-- <div>Drag and drop URDF files or folders! <br/> (Chrome Only)</div> -->
-                <!-- <div id="ignore-joint-limits" class="toggle">Ignore Joint Limits</div> -->
-                <!-- <div id="hide-fixed" class="toggle">Hide Fixed Joints</div> -->
-                <!-- <div id="radians-toggle" class="toggle">Use Radians</div> -->
-                <!-- <div id="autocenter-toggle" class="toggle checked">Autocenter</div> -->
-                <!-- <div id="collision-toggle" class="toggle">Show Collision</div> -->
-                <div id="do-animate" class="toggle checked">Animate Joints</div>
-                <label>
-                    Up Axis
-                    <select id="up-select">
-                        <option value="+X">+X</option>
-                        <option value="-X">-X</option>
-                        <option value="+Y">+Y</option>
-                        <option value="-Y">-Y</option>
-                        <option value="+Z">+Z</option>
-                        <option value="-Z" selected>-Z</option>
-                    </select>
-                </label>
-                <ul></ul>
+                <div id="controls">
+                    <!-- <div id="toggle-controls"></div> -->
+                    <!-- <div>Drag and drop URDF files or folders! <br/> (Chrome Only)</div> -->
+                    <!-- <div id="ignore-joint-limits" class="toggle">Ignore Joint Limits</div> -->
+                    <!-- <div id="hide-fixed" class="toggle">Hide Fixed Joints</div> -->
+                    <!-- <div id="radians-toggle" class="toggle">Use Radians</div> -->
+                    <!-- <div id="autocenter-toggle" class="toggle checked">Autocenter</div> -->
+                    <!-- <div id="collision-toggle" class="toggle">Show Collision</div> -->
+                    <div id="do-animate" class="toggle checked">Animate Joints</div>
+                    <label>
+                        Up Axis
+                        <select id="up-select">
+                            <option value="+X">+X</option>
+                            <option value="-X">-X</option>
+                            <option value="+Y">+Y</option>
+                            <option value="-Y">-Y</option>
+                            <option value="+Z">+Z</option>
+                            <option value="-Z" selected>-Z</option>
+                        </select>
+                    </label>
+                    <ul></ul>
+                </div>
             </div>
         </div>
         <urdf-viewer up="-Z" display-shadow tabindex="0"></urdf-viewer>

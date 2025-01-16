@@ -125,13 +125,12 @@ input:focus {
     margin: 0 20px;
 }
 
-#title {
-    justify-content: center;
-    align-items: center;
+#all {
+    position: absolute;
 }
 
 #menu {
-    position: absolute;
+    position: relative;
     width: 20%;
     top: 0;
     left: 0;
@@ -141,8 +140,16 @@ input:focus {
     margin: 20px;
 }
 
+#title {
+    position: relative;
+    text-align: center;
+    margin: 20px;
+}
+
 #desc {
+    position: relative;
     text-wrap: nowrap;
+    margin: 20px;
 }
 
 #urdf-options {
