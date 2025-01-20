@@ -150,6 +150,9 @@ input:focus {
 #desc {
     position: relative;
     margin: 20px;
+}
+
+#desc_label {
     font-size: 14px;
 }
 
