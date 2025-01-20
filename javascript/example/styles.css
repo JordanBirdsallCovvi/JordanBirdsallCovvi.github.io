@@ -149,7 +149,6 @@ input:focus {
 
 #desc {
     position: relative;
-    text-wrap: nowrap;
     margin: 20px;
     font-size: 14px;
 }
