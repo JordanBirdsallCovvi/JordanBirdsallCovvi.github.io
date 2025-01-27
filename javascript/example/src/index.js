@@ -101,6 +101,52 @@ viewer.addEventListener('ignore-limits-change', () => {
 
 viewer.addEventListener('angle-change', e => {
     if (sliders[e.detail]) sliders[e.detail].update();
+
+    const joint = viewer.robot.joints[e.detail];
+    const angle = (joint.angle - joint.offset) / joint.multiplier;
+
+    switch (e.detail) {
+        case '_thumb_proximal_j01':
+        case '_thumb_link_j01':
+        case '_thumb_distal_j01':
+        case '_thumb_follower_j01':
+            viewer.setJointValue('Thumb', angle);
+            break;
+        case '_index_proximal_j01':
+        case '_index_link_j01':
+        case '_index_distal_j01':
+        case '_index_knuckle_j01':
+        case '_index_follower_j01':
+            viewer.setJointValue('Index', angle);
+            break;
+        case '_middle_proximal_j01':
+        case '_middle_link_j01':
+        case '_middle_distal_j01':
+        case '_middle_knuckle_j01':
+        case '_middle_follower_j01':
+            viewer.setJointValue('Middle', angle);
+            break;
+        case '_ring_proximal_j01':
+        case '_ring_link_j01':
+        case '_ring_distal_j01':
+        case '_ring_knuckle_j01':
+        case '_ring_follower_j01':
+            viewer.setJointValue('Ring', angle);
+            break;
+        case '_little_proximal_j01':
+        case '_little_link_j01':
+        case '_little_distal_j01':
+        case '_little_knuckle_j01':
+        case '_little_follower_j01':
+            viewer.setJointValue('Little', angle);
+            break;
+        case '_thumb_chassis_j01':
+        case '_lisa_j01':
+            viewer.setJointValue('Rotate', angle);
+            break;
+        default:
+            break;
+    }
 });
 
 
