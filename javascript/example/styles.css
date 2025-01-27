@@ -179,14 +179,6 @@ input:focus {
     z-index: 10;
 }
 
-    position: relative;
-    margin: 20px;
-}
-
-}
-
-}
-
 #urdf-options {
     /* text-overflow: ellipsis; */
 
