@@ -342,8 +342,13 @@ const updateAngles_test = (driver_joint, start, stop) => {
 };
 
 
+var this_time = Date.now();
+var prev_time = Date.now();
+var diff_time = 1;
+var time = 0;
+
 const updateAngles_covvi_hand = () => {
-    const time = Date.now() / 9e2;
+    time += diff_time / 9e2;
     const ratio = (Math.asin(Math.sin(time)) + (Math.PI * 0.5)) / Math.PI;
     // const x = THREE.MathUtils.lerp(0, 360 / Math.PI, ratio) * DEG2RAD;
     const x = THREE.MathUtils.lerp(0, 180 / Math.PI, ratio) * DEG2RAD;
@@ -352,6 +357,8 @@ const updateAngles_covvi_hand = () => {
 
 
 const updateLoop = () => {
+    this_time = Date.now();
+    diff_time = this_time - prev_time;
 
     if (animToggle.classList.contains('checked')) {
         switch (jurdf) {
@@ -367,6 +374,7 @@ const updateLoop = () => {
         }
     }
 
+    prev_time = this_time;
     requestAnimationFrame(updateLoop);
 };
 
