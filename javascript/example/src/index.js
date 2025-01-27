@@ -300,7 +300,7 @@ document.addEventListener('WebComponentsReady', () => {
     registerDragEvents(viewer, () => {
         setColor('#263238');
         animToggle.classList.remove('checked');
-        updateList();
+        updateURDFList();
     });
 });
 
@@ -370,7 +370,8 @@ const updateLoop = () => {
     requestAnimationFrame(updateLoop);
 };
 
-const updateList = () => {
+
+const updateURDFList = () => {
 
     document.querySelectorAll('#urdf-options li[urdf]').forEach(el => {
 
@@ -389,7 +390,7 @@ const updateList = () => {
     });
 };
 
-updateList();
+updateURDFList();
 
 document.addEventListener('WebComponentsReady', () => {
 
