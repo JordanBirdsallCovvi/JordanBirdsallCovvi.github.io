@@ -391,6 +391,7 @@ const updateAngles_test = (driver_joint, start, stop) => {
 var this_time = Date.now();
 var prev_time = Date.now();
 var diff_time = 1;
+var frames_per_second = 1;
 var time = 0;
 
 const updateAngles_covvi_hand = () => {
@@ -401,10 +402,14 @@ const updateAngles_covvi_hand = () => {
     joints_to_drive.forEach((element) => viewer.setJointValue(element, x));
 };
 
+function ema(y, x, w) {
+    return (y * w) + (x * (1.0 - w));
+}
 
 const updateLoop = () => {
     this_time = Date.now();
     diff_time = this_time - prev_time;
+    frames_per_second = ema(1000 / diff_time, frames_per_second, 0.2);
 
     if (animToggle.classList.contains('checked')) {
         switch (jurdf) {
