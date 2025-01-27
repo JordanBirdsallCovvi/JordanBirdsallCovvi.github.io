@@ -6,6 +6,12 @@ html, body, urdf-viewer {
     overflow: hidden;
 }
 
+urdf-viewer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
 body {
     font-family: "Roboto", helvetica, arial, sans-serif;
     animation: fade 3s ease;
@@ -125,8 +131,39 @@ input:focus {
     margin: 0 20px;
 }
 
-#all {
-    position: absolute;
+#title #desc #desc_label #menu {
+    background: rgba(255,255,255,0.0);
+}
+
+#title {
+    position: relative;
+    pointer-events: none;
+    text-align: center;
+    white-space: nowrap;
+    /* width: 100%; */
+    width: 0%;
+    /* margin: 20px; */
+    /* left: calc(50% - 100px); */
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 7;
+}
+
+#desc {
+    position: relative;
+    pointer-events: none;
+    margin: 20px;
+    width: 100%;
+    z-index: 8;
+    /* white-space: nowrap; */
+}
+
+#desc_label {
+    pointer-events: none;
+    font-size: 14px;
+    z-index: 9;
     width: 100%;
 }
 
@@ -139,25 +176,29 @@ input:focus {
     flex-direction: column;
     max-height: 100%;
     margin: 20px;
+    z-index: 10;
 }
 
-#title {
-    position: relative;
-    text-align: center;
-    margin: 20px;
-}
-
-#desc {
     position: relative;
     margin: 20px;
 }
 
-#desc_label {
-    font-size: 14px;
+}
+
 }
 
 #urdf-options {
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
+
+    position: relative;
+    width: 0%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    margin: 20px;
+    z-index: 12;
 }
 
 #urdf-options li {
@@ -165,10 +206,12 @@ input:focus {
     opacity: 0.5;
     font-size: 20px;
     font-weight: 100;
+    white-space: nowrap;
 }
 
 #urdf-options li:hover {
     opacity: 0.75;
+    white-space: nowrap;
 }
 
 #controls {
