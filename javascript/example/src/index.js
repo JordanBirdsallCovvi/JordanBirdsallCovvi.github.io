@@ -241,7 +241,7 @@ viewer.addEventListener('urdf-processed', () => {
                 const input_limit_lower = joint.limit.lower * degMultiplier;
                 const input_limit_upper = joint.limit.upper * degMultiplier;
                 angle = 100 * (angle - input_limit_lower) / (input_limit_upper - input_limit_lower);
-                input.value = parseFloat(angle.toPrecision(3));
+                input.value = parseFloat(Math.round(angle));
 
                 // directly input the value
                 slider.value = 100 * (joint.angle - joint.limit.lower) / (joint.limit.upper - joint.limit.lower);
