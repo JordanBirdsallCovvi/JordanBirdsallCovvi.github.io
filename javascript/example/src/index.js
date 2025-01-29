@@ -212,8 +212,8 @@ viewer.addEventListener('urdf-processed', () => {
             li.innerHTML =
             `
             <span title="${ joint.name }">${ joint.name }</span>
-            <input type="range" value="0" step="0.0001"/>
-            <input type="number" step="0.0001" />
+            <input type="range" value="0" step="1"/>
+            <input type="number" step="1" />
             `;
             li.setAttribute('joint-type', joint.jointType);
             li.setAttribute('joint-name', joint.name);
