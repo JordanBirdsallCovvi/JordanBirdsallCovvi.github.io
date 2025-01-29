@@ -232,30 +232,39 @@ viewer.addEventListener('urdf-processed', () => {
                     angle *= degMultiplier;
                 }
 
-                if (Math.abs(angle) > 1) {
-                    angle = angle.toFixed(1);
-                } else {
-                    angle = angle.toPrecision(2);
-                }
+                // if (Math.abs(angle) > 1) {
+                //     angle = angle.toFixed(100);
+                // } else {
+                //     angle = angle.toPrecision(2);
+                // }
 
-                input.value = parseFloat(angle);
+                const input_limit_lower = joint.limit.lower * degMultiplier;
+                const input_limit_upper = joint.limit.upper * degMultiplier;
+                angle = 100 * (angle - input_limit_lower) / (input_limit_upper - input_limit_lower);
+                input.value = parseFloat(angle.toPrecision(3));
 
                 // directly input the value
-                slider.value = joint.angle;
+                slider.value = 100 * (joint.angle - joint.limit.lower) / (joint.limit.upper - joint.limit.lower);
 
-                if (viewer.ignoreLimits || joint.jointType === 'continuous') {
-                    slider.min = -6.28;
-                    slider.max = 6.28;
+                // if (viewer.ignoreLimits || joint.jointType === 'continuous') {
+                //     slider.min = -6.28;
+                //     slider.max = 6.28;
 
-                    input.min = -6.28 * degMultiplier;
-                    input.max = 6.28 * degMultiplier;
-                } else {
-                    slider.min = joint.limit.lower;
-                    slider.max = joint.limit.upper;
+                //     input.min = -6.28 * degMultiplier;
+                //     input.max = 6.28 * degMultiplier;
+                // } else {
+                //     slider.min = joint.limit.lower;
+                //     slider.max = joint.limit.upper;
 
-                    input.min = joint.limit.lower * degMultiplier;
-                    input.max = joint.limit.upper * degMultiplier;
-                }
+                //     input.min = joint.limit.lower * degMultiplier;
+                //     input.max = joint.limit.upper * degMultiplier;
+                // }
+
+                slider.min = 0.0;
+                slider.max = 100.0;
+
+                input.min = 0.0;
+                input.max = 100.0;
             };
 
             switch (joint.jointType) {
@@ -272,14 +281,16 @@ viewer.addEventListener('urdf-processed', () => {
             }
 
             slider.addEventListener('input', () => {
-                viewer.setJointValue(joint.name, slider.value);
+                viewer.setJointValue(joint.name, (slider.value / 100) * (joint.limit.upper - joint.limit.lower) + joint.limit.lower);
                 li.update();
             });
 
             input.addEventListener('change', () => {
                 // const degMultiplier = radiansToggle.classList.contains('checked') ? 1.0 : DEG2RAD;
                 const degMultiplier = DEG2RAD;
-                viewer.setJointValue(joint.name, input.value * degMultiplier);
+                const input_limit_lower = joint.limit.lower * RAD2DEG;
+                const input_limit_upper = joint.limit.upper * RAD2DEG;
+                viewer.setJointValue(joint.name, (((input.value / 100) * (input_limit_upper - input_limit_lower)) + input_limit_lower) * degMultiplier);
                 li.update();
             });
 
